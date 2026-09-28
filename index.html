@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="El tiempo en tiempo real con datos de Open-Meteo">
+  <meta name="theme-color" content="#1e3a8a">
+  <title>El Tiempo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dia">
+  <div class="fondo" aria-hidden="true"></div>
+
+  <main class="app">
+    <header class="cabecera">
+      <h1 class="marca">El Tiempo</h1>
+      <form class="buscador" id="buscador" role="search" autocomplete="off">
+        <label for="busqueda" class="solo-lectores">Buscar ciudad</label>
+        <input id="busqueda" type="search" placeholder="Buscar ciudad…" aria-autocomplete="list" aria-controls="sugerencias">
+        <button type="submit" aria-label="Buscar">🔍</button>
+        <button type="button" id="btn-ubicacion" aria-label="Usar mi ubicación" title="Usar mi ubicación">📍</button>
+        <ul id="sugerencias" class="sugerencias" role="listbox" hidden></ul>
+      </form>
+    </header>
+
+    <p id="mensaje" class="mensaje" role="status" hidden></p>
+
+    <section class="actual tarjeta" aria-live="polite">
+      <div class="lugar">
+        <h2 id="ciudad">Cargando…</h2>
+        <p id="region" class="secundario"></p>
+      </div>
+      <div class="principal">
+        <span id="icono" class="icono-grande" role="img" aria-label="">⏳</span>
+        <div>
+          <p class="temperatura"><span id="temperatura">--</span><span class="unidad">°C</span></p>
+          <p id="descripcion" class="descripcion"></p>
+        </div>
+      </div>
+      <dl class="detalles">
+        <div><dt>Sensación térmica</dt><dd id="sensacion">--</dd></div>
+        <div><dt>Humedad</dt><dd id="humedad">--</dd></div>
+        <div><dt>Viento</dt><dd id="viento">--</dd></div>
+      </dl>
+    </section>
+
+    <section class="tarjeta">
+      <h3 class="titulo-seccion">Próximas 24 horas</h3>
+      <ol id="horas" class="horas"></ol>
+    </section>
+
+    <footer class="pie">
+      <p><span id="actualizado">Sin datos todavía</span> · <button type="button" id="btn-actualizar" class="enlace">Actualizar ahora</button></p>
+      <p class="secundario">Se actualiza automáticamente cada 10 minutos · Datos de <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
